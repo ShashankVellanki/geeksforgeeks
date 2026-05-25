@@ -1,14 +1,24 @@
-import java.util.*;
 class Solution {
     int missingNum(int arr[]) {
-        // code here
-        Arrays.sort(arr);
-        int n = arr.length;
-        for (int i =0;i<n;i++){
-            if(arr[i]!=i+1)
-                return i+1;
+        //linear would give n^2
+        
+        int n=arr.length+1;
+        
+        int []hash=new int[n+1];
+        
+        for(int i=0;i<n-1;i++){
+            hash[arr[i]]=1;
         }
-        return n+1;
+        
+        for(int i=1;i<=n;i++){
+            if(hash[i]==0){
+                return i;
+            }
+            
+        }
+        return -1;
+        
+        
         
     }
 }
